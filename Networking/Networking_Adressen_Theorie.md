@@ -1,169 +1,109 @@
-# Netzwerkeinstellungen und Adressen
+# Network settings and addresses
 
 ---
 
-## IP-Adressen
+## IP addresses
 
-Im Gegensatz zur MAC-Adresse **kann die IP-Adresse geändert werden** und unterliegt der Verwaltung des Administrators. Dessen Arbeit wird durch ein
-klares Schema wie die IP-Adressen vergeben werden erleichtert.
+Unlike the MAC address **the IP address can be changed** and is subject to the administrator's management. His work is facilitated by a
+by a clear scheme of how IP addresses are assigned.
 
-Die IP-Adresse ist eine 32-Bit-Zahl und wird meistens in 4 Paketen von je einem
-Byte und Dezimal geschrieben.   
+The IP address is a 32-bit number and is usually written in 4 packets of one
+byte and decimal.
 
-**Beispiel: 32.126.33.21**
+**Example: 32.126.33.21**
 
-Als 32-Bit-Zahl sieht das so aus:
+As a 32-bit number it looks like this:
 
-| IP-Dezimal | 32       | 126     | 33       | 21       |
-|:-----------|:---------|:--------|:---------|:---------|
-| Binaer     | 00100000 | 0111110 | 00100001 | 00010101 |
-
-
-## Die beiden Teile einer IP-Adresse
-
-Eine IP-Adresse hat **zwei Teile**, ein Teil stellt die **Nummer eines Netzwerkes** dar, also einer Gruppe von PCs, die derselben Organisation angehören und sich meist auch am gleichen Ort befinden. Dieser Teil heisst **Netzwerk-ID** und muss für alle PCs im gleichen Netzwerk gleich sein.
-
-Der andere Teil heisst **Host-ID** und ist die **Nummer des Gerätes** (=Host) in diesem Netzwerk. Die **Netzmaske** eines Netzwerkes besagt, welcher Teil der IP-Adresse die Netzwerk-ID und welcher Teil die Host-ID ist (Für die Netzmaske wir auch der
-Begriff Subnetzmaske verwendet).  
-
-**Beispiele:**
-
-![netz-host-id](./images/62-nw_800.png)
-
-Dort wo in der Netzmaske **255** steht (oder Binär eine 1), ist in der Adresse der Netzwerkanteil (Netz-ID);   
-dort wo in der Netzmaske **0** steht (oder Binär eine 0), ist in der Adresse der Hostanteil (Host-ID).
-
-## Netzwerk-ID und Host-ID
-
-Die **Netzwerk-ID** ist die Nummer des Netzwerkes. Der Netzwerkanteil kann unterschiedlich gross sein, muss jedoch immer links in der Adresse stehen. Die
-restlichen Nummern dahinter, **die Host-ID,** dienen zur Nummerierung der einzelnen Netzwerkgeräte in einem bestimmten Netzwerk (z.B. PCs, Drucker,
-Smartphones… oder heute auch schon mal Kühlschränke).
-
-**Merke:**
-
--   Alle Geräte innerhalb eines Netzwerkes **müssen dieselbe Netzwerk-ID**
-    haben, damit sie miteinander kommunizieren können.   
-    PCs mit unterschiedlicher Netzwerk-ID können nicht einfach so
-    kommunizieren[^1] (probieren Sie es mal aus, indem Sie PCs am selben
-    physikalischen Netz unterschiedliche Netz-IDs geben).
-
--   Alle Geräte innerhalb dieser Netzwerk-ID müssen aber auch **unterschiedliche
-    Host-IDs** haben, sonst klappt die Kommunikation auch nicht.
-
-[^1]: Um zwischen verschiedenen IP-Netzen (unterschiedliche Netz-ID) zu
-    kommunizieren, brauchen es einen **Router**.
-
-Bestimmen Sie die **Netzwerk-ID** und die **Host-ID** (Nummer des Gerätes innerhalb
-dieses Netzes) bei den folgenden IP-Adressen.
-
-![netz-host-id](./images/63-ips_800.png)
+| IP decimal | 32        | 126      | 33        | 21        |
+|:-----------|:----------|:---------|:----------|:----------|
+| Binary     | 00100000  | 0111110  | 00100001  | 00010101  |
 
 
-Welche dieser Geräte (IP's) können **direkt** miteinander kommunizieren?
+## The two parts of an IP address
+
+An IP address has **two parts**, one part represents the **number of a network**, i.e. a group of PCs belonging to the same organization and usually located at the same place. This part is called **Network ID** and must be the same for all PCs on the same network.
+
+The other part is called **host ID** and is the **number of the device** (=host) in this network. The **netmask** of a network indicates which part of the IP address is the network ID and which part is the host ID (the term subnetmask is also used for the netmask).
+term subnet mask is also used for the netmask).
+
+**Examples
+
+![net-host-id](./images/62-nw_800.png)
+
+Where in the netmask **255** is written (or binary a 1), in the address is the network part (net-ID);   
+where the netmask contains **0** (or binary 0), the address contains the host part (host ID).
+
+## Network ID and Host ID
+
+The **Network-ID** is the number of the network. The network part can be of different size, but must always be on the left side of the address. The
+remaining numbers behind it, **the Host-ID,** are used to number the individual network devices in a certain network (e.g. PCs, printers,
+smartphones... or nowadays sometimes refrigerators).
+
+**Note.
+
+- All devices within a network **must have the same network ID** so that they can communicate with each other.
+  so that they can communicate with each other.   
+  PCs with different network ID can not communicate
+  communicate[^1] (try it by giving different network IDs to PCs on the same
+  physical network different network IDs).
+
+- However, all devices within this network ID must also have **different
+  host IDs**, otherwise the communication won't work either.
+
+[^1]: In order to communicate between different IP networks (different network ID)
+you need a **router**.
+
+Determine the **Network-ID** and the **Host-ID** (number of the device within
+this network) at the following IP addresses.
+
+![network-host-id](./images/63-ips_800.png)
+
+
+Which of these devices (IP's) can communicate **directly** with each other?
 
 
 ---
 
-## IP-Adressklassen (Classful Network)
+## IP address classes (Classful Network)
 
-Früher wurden die IP-Adressen (0.0.0.0 bis 255.255.255.255) in verschiedene
-**Bereiche** die sogenannten **Klassen** unterteilt (sog. *Classful Network*).
-Obwohl die Klassen heute an in der Praxis kaum mehr Bedeutung haben, trifft man
-noch häufig auf die entsprechenden Begriffe, deshalb sollte man die
-verschiedenen Adressklassen kennen. Eine Klasse legt fix fest, welcher Teil der
-Adresse die Netz-ID und welcher die Host-ID ist (es braucht keine Netzmaske).
+Previously, IP addresses (0.0.0.0 to 255.255.255.255) were divided into different
+ranges** the so-called **classes** (so-called *classful network**).
+Although the classes have today in the practice hardly more meaning, one meets still frequently
+the corresponding terms, so you should know the different address classes.
+know the different address classes. A class fixes which part of the
+address is the net-ID and which is the host-ID (no netmask is needed).
 
-Es gibt **5 Klassen**, die mit einem Buchstaben des Alphabets (**A-E**)
-gekennzeichnet werden, wobei nur **drei Klassen (A-C)** für uns relevant sind.  
+There are **5 classes**, which are marked with a letter of the alphabet (**A-E**)
+whereas only **three classes (A-C)** are relevant for us.
 
-Die Klassen unterscheiden sich in der Aufteilung (resp. der Grösse) der
-Netzwerk-ID und der Host-ID.
+The classes differ in the distribution (resp. the size) of the
+network ID and the host ID.
 
-|   | Netz-ID | Host-ID |
-|---|---|---|
-| **Klasse A:** | 8 Bit   | 24 Bit  |
+|              | Network ID | Host ID |
+|--------------|------------|---------|
+| **Class A:** | 8 bit      | 24 bit  |
 
-|   | Netz-ID | Netz-ID |
-|---|---|---|
-| **Klasse B:**  | 16 Bit  | 16 Bit  |
+|              | network ID | network ID |
+|--------------|------------|------------|
+| **Class B:** | 16 Bit     | 16 Bit     |
 
-|   | Netz-ID | Netz-ID | 
-|---|---|---|
-| **Klasse C:** | 24 Bit  | 8 Bit   |
+|              | Net ID | Net ID | 
+|--------------|--------|--------|
+| **Class C:** | 24 Bit | 8 Bit  |
 
-Die Unterteilung ist an der **ersten dezimalen Zahl** (1. Byte) erkennbar. Aus
-der unterschiedlichen Grösse der Netzwerk-ID und der Host-ID ergeben sich auch unterschiedliche Grössen für die Netzwerke:
+The subdivision can be recognized by the **first decimal number** (1st byte). From
+the different sizes of the network ID and the host ID result also different sizes for the networks:
 
 ![A-B-C](./images/03-classes.png)
 
-An der Zahl **im vordersten Byte** ist die Klasse eindeutig ersichtlich.
-- Verwendbare Adressen = **Anzahl Adressen – 2**  
-- Nicht verwenden: **tiefste** Adresse = Netzadresse (Adresse des Netzwerks)  
-**höchste** Adresse = Broadcast (Sendung an alle im Netzwerk)
-- 127.x.x.x = **reservierte** Adresse, z.B. 127.0.0.1 -\> localhost (immer der
-eigene Rechner).
+The number **in the foremost byte** clearly indicates the class.
+- Usable addresses = **number of addresses - 2**.
+- Do not use: **lowest** address = network address (address of the network).  
+  **highest** address = broadcast (broadcast to everyone on the network)
+- 127.x.x.x = **reserved** address, e.g. 127.0.0.1 -\> localhost (always your own computer).
+  own computer).
 
-Die meisten IP-Adressen sind heute vergeben, an Regierungsstellen, grosse Firmen und insbesondere an Internetprovider.  
-Die meisten Firmen „mieten“ bei einem Internetprovider die Internetverbindung und erhalten auch die nötigen Adressen. Sie brauchen dann nur eine oder wenige Adressen, um von ihrem internen Netz aufs Internet zu gelangen. Intern werden dann sogenannte **private Adressen** benutzt (mehr dazu später).
+Most IP addresses today are assigned, to government agencies, large companies, and especially to Internet providers.  
+Most companies "rent" the internet connection from an internet provider and also get the necessary addresses. They then only need one or a few addresses to access the Internet from their internal network. Internally, so-called **private addresses** are used (more about this later).
 
-Eine IP Adresse mit der Nummer **32.126.33.21** sagt aus, dass es ein **Class A Netz** ist und damit das **erste Byte** die **Netz-ID**; das entspricht der Netzmaske **255.0.0.0**. Damit ist die Netzwerk-ID **32** und die Host-ID **126.33.21** (die Nummer des Gerätes) im 32er-Netz.
-
-Die IP Adresse **205.13.6.99** ist eine **Class C Adresse**; das entspricht der Netzmaske **255.255.255.0**. Damit ist die **Netzwerk-ID 205.13.6** und **die Host-ID** **99** (die Nummer des Gerätes) im 205.13.6er-Netz.
-
-Bestimmen Sie die **Klasse**, die **Netzwerk-ID** und die **Host-ID** für die folgenden IP-Adressen:
-
-![a-b-c](./images/64-abc_800.png)
-
----
-
-
-
-## CIDR - Classless Inter-Domain Routing
-
-CIDR (Aussprache [/ˈsaɪ.dr/ oder /ˈsi.dr/]) ist ein Verfahren, um den IPv4-Adressraum effizienter zu nutzen. CIDR wurde 1993 eingeführt, um das Konzept der Netzklassen abzulösen. Durch die Definition der Netzklassen fand die Teilung einer IPv4-Adresse in Netz- und Host-ID im Prinzip nach **8** (A), **16** (B) bzw. **24** (C) Bit statt.   
-
-Mit CIDR **entfällt die feste Zuordnung** zwischen IPv4-Adresse und Netzklasse. Die Teilung erfolgt anhand der **Subnetzmaske** oder CIDR-Suffix, der die **bitweise** Einteilung des IPv4-Adressraums und somit in beliebig kleine Subnetze ermöglicht.
-
-### CIDR-Schreibweise
-
-Mit CIDR wurden so genannte Suffixe eingeführt. Das Suffix sagt aus, **wie viele Bits vom Anfang der IPv4**-Adresse zum **Netz** gehören.
-
-- Beispiel bei IPv4: 172.16.0.1.**/16** -\> 172.16.
-
-Die früher verwendeten IPv4-Netzklassen A, B und C entsprechen heute den CIDR-Suffixen **A** (**/8**), **B** (**/16**) und **C** (**/24**).  
-Vereinfacht ausgedrückt handelt es sich um eine Schreibweise, die die Subnetzmaske abkürzt. Das Suffix gibt die **Anzahl der 1er Bits in der Subnetzmaske** an:
-
-| **Schreibweise mit Subnetzmaske** | **Binäre Schreibweise der Subnetzmaske** | **Verkürzte Schreibweise  mit CIDR-Suffix** |
-|---|---|---|
-| 10.0.0.1 / **255**.0.0.0 | **11111111**.00000000.00000000.000000 | 10.0.0.1 **/8** |
-| 192.168.0.1 / **255.255.255**.0  | **11111111.11111111.11111111**.00000000  | 192.168.0.1/**24** |
-
-### Unterteilung von Netzen mit der Netzmaske
-
-Ein grösseres Netzwerk wird immer unterteilt in sogenannte Subnetze, daher auch der Begriff "Subnetzmaske". In einem Class A Netz z.B. kann man theoretisch über 16 Mio. Netzwerkknoten adressieren. Physisch kann man nicht so viele Geräte an ein einzelnes Netzwerk anschliessen. Es können auch kaum 16 Millionen Benutzer im gleichen Gebäude arbeiten, sie sind immer über mehrere Gebäude, Orte, Länder
-oder gar Kontinente verteilt.
-
-Mit CIDR ist eine flexible Unterteilung in kleinere Netze möglich, unabhängig der fixen Grenzen durch die IP-Klassen. Mit CIDR kann die Netzmaske bitweise (nicht nur in 8-Bit-Schritten wie bei den Klassen) verändert -  und damit die Grösse der Netze angepasst werden – dazu aber später mehr…
-
-In kleineren Netzen wird kaum eine Unterteilung des Netzwerkes vorgenommen. Man verwendet die Netzmaske der jeweiligen (alten) Adressklassen. Diese normalen
-Netzmasken einer Adressklasse ohne Unterteilung heissen auch **Standard Netzmasken** oder **Default Netmask**.
-
-**Wichtig:** Die Netzmaske **muss aber immer auf allen Stationen des Netzes gleich sein**, damit die Kommunikation funktioniert.
-
-# Private IP-Netzwerke
-
-Die öffentlichen IP-Adressen sind schon seit längerem knapp. Durch verschiedene Massnahmen hat man das Problem jedoch entschärfen können[^2], vor allem durch die Verwendung von sogenannten **privaten IP-Adressen**. Diese werden sehr häufig in kleineren lokalen Netzen gebraucht.
-
-[^2]: Seit Jahren steht auch die Weiterentwicklung **IPV6** bereit. Die neue Version besteht aus 128 Bit-(statt 32 wie IP V4), damit sind praktisch unendlich viele Adressen (2^128) möglich, aber auch weitere Funktionen wie Sicherheit etc. wurden integriert.
-
-Grundsätzlich ist die Verwendung der IP-Adressen international geregelt. Die Vergabe der IP-Adressen wird hierarchisch geführt. Als Anwender werden sie mit
-dem Internet-Provider abmachen, welche Adresse sie einsetzten dürfen. Auf der Seite [www.ripe.net](http://www.ripe.net) finden sie eine Möglichkeit um nach **Eigentümer von IP-Adressen** zu suchen.
-
-Verwenden Sie, ohne Rücksprache mit dem Internet-Provider eine bereits vergebene Adresse und möchten sie mit dem Internet verbunden sein, wird es ohne zusätzliche Vorkehrungen zu einem Konflikt im Internet kommen.
-
-Um dies einfach zu umgehen, hat man **privaten Netzen (Intranet),** eigene Adressbereich zugewiesen. Diese Bereiche sind **auf dem Internet nicht zulässig**, können jedoch dafür von jedem Betreiber eines LAN selber verwaltet werden.
-
-Sobald man aus einem solchen Netz eine Verbindung zum Internet herstellt, wird der Router, der ins Internet geht, diese **private Adresse in eine öffentliche
-Adresse umwandeln**. Dies wird mit **NAT** (Network Address Translation) realisiert.
-
-Notiere Sie die IP-Adressen, die für den privaten Bereich freigegeben wurden.
+An IP address with the number **32.126.33.21** says that it is a **Class A network** and thus the **first byte** is the **network ID**; this corresponds to the netmask **255.0.0**. Thus the network ID is **32** and
