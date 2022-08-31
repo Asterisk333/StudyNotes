@@ -6,13 +6,13 @@
 >   - IP fundamentals
 >   - Subnetting fundamentals
 >
-> [📄 » **Navigation**](Linux_Filesystem_Navigation.md)
->   - Filesystem Usage
->   - file editing
->   - dir editing
+> [📄 » **Subnetting**](Networking_Subnetting.md)
+>   - IP-Adresses
+>   - General Information
 >
-> [📄 » **Editor**](Linux_Terminal_editor.md)
-> - How to use nano
+> [📄 » **Cisco**](CISCO_Packet_Tracer.md)
+> - connecting to Consol
+> - General commands
 
 ---
 >[⬅️**back**](../README.md)
