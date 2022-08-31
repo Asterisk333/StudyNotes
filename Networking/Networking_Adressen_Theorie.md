@@ -1,7 +1,7 @@
 # Network settings and addresses
 
 ---
-
+>[⬅️**back**](./README.md)
 ## IP addresses
 
 Unlike the MAC address **the IP address can be changed** and is subject to the administrator's management. His work is facilitated by a

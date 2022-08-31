@@ -1,6 +1,7 @@
 # Linux fundamental commands
 
 ---
+>[⬅️**back**](./README.md)
 
 | Simple Commands | Description                                            |
 |:----------------|:-------------------------------------------------------|

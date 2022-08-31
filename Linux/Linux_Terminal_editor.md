@@ -1,7 +1,7 @@
 # Terminal Editor
 
 ---
-
+>[⬅️**back**](./README.md)
 ## Nano
 
 ---
