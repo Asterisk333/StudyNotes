@@ -36,5 +36,12 @@ Router# show running-config
 ```
 ![show_running-config](./images/cisco_Router_Console_Running_Config.png)
 
+## Show Routtable
 
+---
+
+```
+Router# show ip route
+```
+![show_ip_rout](./images/cisco_Router_Console_Show_Route.png)
 
