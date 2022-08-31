@@ -1,6 +1,6 @@
 # Linux common Directories
 
---->[⬅️**back**](./README.md)
+>[⬅️**back**](./README.md)
 ## /etc
 
 This root directory is one of the most important root directories on your system. The etc folder (short for  
