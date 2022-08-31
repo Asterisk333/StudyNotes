@@ -71,4 +71,5 @@ tryhackme@linux2:~$ file note
 note: ASCII text
 ```
 
+---
 >[⬅️**back**](./README.md)

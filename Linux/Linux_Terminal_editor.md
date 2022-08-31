@@ -25,4 +25,5 @@ I can write things into "myfile"
 ^X Exit        ^R Read File   ^\ Replace     ^U Paste Text  ^T To Spell    ^_ Go To Line  M-E Redo       M-6 Copy Text
 ```
 
+---
 >[⬅️**back**](./README.md)

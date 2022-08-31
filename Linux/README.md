@@ -17,4 +17,6 @@
 > [📄 » **Common Directories**](Linux_Common_Directories.md)
 > - Common dir
 > - what are they for
-> >[⬅️**back**](../README.md)
+
+---
+ >[⬅️**back**](../README.md)

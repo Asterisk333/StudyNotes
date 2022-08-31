@@ -14,4 +14,5 @@
 > [📄 » **Editor**](Linux_Terminal_editor.md)
 > - How to use nano
 
+---
 >[⬅️**back**](../README.md)
