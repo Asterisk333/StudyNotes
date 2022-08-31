@@ -2,7 +2,7 @@
 
 ---
 >[📁 **Lecture02**](./Lecture_31082022.md)
-> - topics:
+> ### topics:
 >  - Subnetting
 >  - GIT
 >  - Virtualbox
