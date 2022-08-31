@@ -22,4 +22,4 @@ Bits of our IP is Locked. mores so this limits our network components to a maxim
 
 Adding 1 bit to the subnet mask halfs the nbr of possible Netorkdevices.
 
->[⬅️**back**](../README.md)
+>[⬅️**back**](./README.md)

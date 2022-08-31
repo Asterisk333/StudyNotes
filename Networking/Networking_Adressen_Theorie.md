@@ -108,4 +108,4 @@ Most companies "rent" the internet connection from an internet provider and also
 
 An IP address with the number **32.126.33.21** says that it is a **Class A network** and thus the **first byte** is the **network ID**; this corresponds to the netmask **255.0.0**. Thus the network ID is **32** and
 
->[⬅️**back**](../README.md)
+>[⬅️**back**](./README.md)

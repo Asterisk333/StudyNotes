@@ -32,3 +32,5 @@ directory such as "/home/root" by default.
 This is a unique root directory found on a Linux install. Short for "temporary", the /tmp directory is  
 volatile and is used to store data that is only needed to be accessed once or twice. Similar to the  
 memory on your computer, once the computer is restarted, the contents of this folder are cleared out.
+
+>[⬅️**back**](./README.md)
