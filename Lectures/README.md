@@ -1,7 +1,12 @@
 # Lectures
 
 ---
->[📄 » **Fundamentals**](Linux_Fundamental_Commands.md)
-
-
+>[📁 **Lecture02**](./Lecture_31082022.md)
+> - topics:
+>  - Subnetting
+>  - GIT
+>  - Virtualbox
+>  - Linux  
+>
+---
 >[⬅️**back**](../README.md)
