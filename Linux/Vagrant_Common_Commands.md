@@ -7,7 +7,8 @@
 | vagrant ssh                | connect to Container                       |
 | vagrant halt               | stop the container                         |
 | vagrant up                 | start the container                        |
-|||
+| vagrant destroy -f         | loescht vm ohne vagant file                |
+
 
 Vagrant is used to create a vm on a vm --> containers  
 

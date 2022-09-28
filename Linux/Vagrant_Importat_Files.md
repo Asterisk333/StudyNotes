@@ -3,6 +3,7 @@
 ## Vagrantfile 
 | line                               | use                                                      |
 |------------------------------------|----------------------------------------------------------|
+|                                    | general config                                           |
 | config.vm.box                      | = "ubuntu/xenial64"                                      |
 | config.vm.hostname                 | = 'web-dev'                                              |
 | config.vm.provision 'shell', path: | 'provision.sh'                                           |
@@ -12,5 +13,6 @@
 ---
 
 ## provision.sh
-| line | use |
-|------|-----|
+| line | use                    |
+|------|------------------------|
+|      | install addon software |
