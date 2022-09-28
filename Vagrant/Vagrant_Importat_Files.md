@@ -17,4 +17,6 @@
 |------|------------------------|
 |      | install addon software |
 
+---
+
 >[⬅️**back**](../README.md)

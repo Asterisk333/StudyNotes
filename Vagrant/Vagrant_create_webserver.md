@@ -69,6 +69,9 @@ $ nano provision.sh
 ```
 $ vagrant reload
 ```  
+
+---
+
 >[⬅️**back**](../README.md)
 
 

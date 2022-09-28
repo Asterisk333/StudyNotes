@@ -20,4 +20,6 @@ Vagrant is used to create a vm on a vm --> containers
 | Vagrantfile  | is used for basic configuration <br/>  config.vm.hostname = 'web-dev' |
 | provision.sh | is used for start up commands                                         |
 
+---
+
 >[⬅️**back**](../README.md)
