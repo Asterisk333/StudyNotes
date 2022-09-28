@@ -68,7 +68,8 @@ $ nano provision.sh
 ![nano-provision.sh](images/Vgrtant_GitRepo_04.png)  
 ```
 $ vagrant reload
-```
+```  
+>[⬅️**back**](../README.md)
 
 
 
