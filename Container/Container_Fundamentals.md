@@ -4,7 +4,7 @@
 
 ## What is a container?
 
-Containers are packages of software that contain all of the necessary elements to run in any environment. In this way,
+Containers are packages of software that contain all the necessary elements to run in any environment. In this way,
 containers virtualize the operating system and run anywhere, from a private data center to the public cloud or even on a
 developer’s personal laptop.
 
