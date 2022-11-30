@@ -34,6 +34,7 @@ RUN npm install
 # Kommando um den Container auszufuehren
 ENTRYPOINT [ "node", "app.js" ]
 ```
+https://web.microsoftstream.com/video/b4143f73-2f96-446d-ba66-c44e8ddcb270?referrer=https:%2F%2Fteams.microsoft.com%2F
 
 
 ---
