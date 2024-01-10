@@ -1,0 +1,159 @@
+Journal für das Tutorial Docker-Bootstrap 
+==========================================
+
+
+
+- Falls kein temporärer Public-Key (Benutzer ubuntu im .ssh/id_rsa.pub) auf Gitlab in den persönlichen Benutzereinstellungen abgelegt ist, 
+  kann Repo kann auf der TBZ-Cloud VM mit dem Account "ubuntu" NICHT geklont werden (kein Key abgelegt) - deshalb folgenden Workaround durchgeführt:
+
+--------------
+1. Option:
+# Lokal auf Laptop (von Gitlab-Repo ein Zip-file erstellt und downgeloaded)
+# ...aus demselben Verzeichnis auf GitBash folgende Kommandos ausgeführt
+$ scp docker-bootstrap-main.zip ubuntu@10.3.44.25:/home/ubuntu		# (Achtung! Eigene IP-Adresse)
+$ ssh ubuntu@10.3.44.xx		# (Achtung! Eigene IP-Adresse)
+$ unzip docker-bootstrap-main.zip
+$ cd docker-bootstrap-main
+
+2. Option:
+# Public-Key der TBZ-VM in die Gitlab-Benutzereinstellungen kopieren (temporär)
+$ ssh ubuntu@10.3.44.25		# (Achtung! Eigene IP-Adresse)
+$ git clone git@gitlab.com:ser-cal/docker-bootstrap.git
+$ cd docker-bootstrap						# ins Repo-Verzeichnis hüpfen
+
+----------------
+
+# Docker-Image für Gitlab im Verzeichnis "first-container" erstellen
+
+$ cd first-container
+$ ls -al		<-- checken, ob Dockerfile drin ist und kurz überprüfen
+$ cat Dockerfile	<-- überprüfen
+$ docker image build -t registry.gitlab.com/ser-cal/docker-bootstrap/webserver_one:1.0 .
+$ docker image ls | grep -i webserver			# Zeige auch die Grösse des Images an (Nur 180MB - massiv weniger als bei Vagrant-Übung)	
+
+$ docker push registry.gitlab.com/ser-cal/docker-bootstrap/webserver_one:1.0	# bereits früher durchgeführt - Repo zeigen
+
+# Auf Gitlab-Repo unter "Packages and registries/Container-Registry" nachschauen, ob das Image da angekommen ist
+
+# Zurück in die TBZ-Cloud VM und Image starten:
+$ docker container run -d --name container-webserver -p 8080:8080 registry.gitlab.com/ser-cal/docker-bootstrap/webserver_one:1.0
+
+# ...danach einen Webbrowser öffnen und die IP-Adresse der Host-VM angeben und ergänzen mit dem Port 8080
+# ...in diesem Fall: 10.3.44.25:8080
+
+
+# wenn das funktioniert hat, noch überpüfen, ob das Image direkt vom Gitlab-Repository geholt werden kann.
+# ...dazu muss der laufende Container zuerst gestoppt und anschliessend mit seinem Image gelöscht 
+
+$ docker container ls | grep -i container-webserver		# zeige (nur) die laufenden Container und filtere nach "container-webserver"
+
+# Docker container stoppen (kann auf zwei Arten erfolgen - entweder mit Name oder mit ID (wie folgt)
+$ docker container stop container-webserver 			# Container stoppen (kann so wieder gestartet werden!)
+$ docker container stop <Container-ID> 				# 10" Grace-Period. Die ersten Ziffern reichen, solange keine anderen Container damit beginnen
+$ docker container ls -a | grep -i container-webserver		# zeige alle Container (auch die gestoppten) und filtere nach "container-webserver"
+
+# Wenn der Container gestoppt ist, kann das zugehörige Image NOCH NICHT gelöscht werden:
+$ docker image list | grep -i webserver_one			# zeige die zugehörigen Image-ID, Zeitpunkt der Erstellund und die Grösse des Images an
+$ docker image rm <Image-ID>					# die ersten drei Ziffern der Image-ID reichen - geht aber nicht, weil das Image noch vom gestoppten Container benutzt wird!
+
+# Container löschen (damit auch das Image gelöscht werden kann) - auch hier mit zwei Varianten möglich:
+$ docker container rm container-webserver			# löscht den Container mit der Namenszuweisung
+$ docker container rm <Container-ID>				# löscht den Container mit der ID (auch hier reichen die ersten Ziffern, sofern unique)
+
+# ...und jetzt kann auch das entsprechende Image gelöscht werden
+$ docker image rm <Image-ID>
+
+# ...wenn alles gelöscht ist, kontrollieren, ob es auch klappt, wenn das Image nicht mehr lokal verfügbar ist und auf dem Gitlab-Registry geholt werden muss:
+# dasselbe Kommando von oben nochmals eingeben (jetzt dauert es länger, weil das Image runtergeladen werden muss, bevor der Container damit gestartet werden kann:
+$ docker container run -d --name container-webserver -p 8080:8080 registry.gitlab.com/ser-cal/docker-bootstrap/webserver_one:1.0
+
+# ACHTUNG!!! Falls eine Fehlermeldung kommt, dass nicht genügend Zugriffsberechtigungen vorhanden sind, sollte vorher noch mit dem gitlab-Account eingeloggt werden wie folgt:
+
+$ docker login registry.gitlab.com
+$ Benutzername
+$ Passwort
+======================================================================================
+
+
+Zweite Übung --> 
+
+ 3. Tutorial (Docker Compose)
+
+$ docker-compose version (per Default nicht auf der TBZ VM drauf)
+# muss zuerst installiert werden
+$ sudo apt install docker-compose
+$ docker-compose version				# kontrollieren, ob vorhanden
+$ sudo apt list | grep -i docker-compose		# kontrollieren, ob vorhanden
+
+# ins Verzeichns "multi-containers" wechseln
+$ cd docker-bootstrap
+$ docker-compose up -d 					# Umgebung starten - geschieht hier deklarativ - ein Kommando
+# ...danach einen Webbrowser öffnen und die IP-Adresse der Host-VM angeben und ergänzen mit dem Port 5000
+# ...in diesem Fall: 10.3.44.25:5000 - wiederholt auf das "Refresh-icon" des Browsers klicken - Anzahl erhöht sich inkrementell
+
+# ...nachdem dieses Experiment abgeschlossen ist, kann die Umgebung mit folgendem einfachen Kommando wieder gelöscht werden:
+$ docker-compose down
+
+# mit folgendem Kommando die Container und Images dieser Übung anschauen:
+$ docker container ls -a | grep -i multicontainer 
+$ docker image ls | grep -i multicontainer
+
+
+============================================================================================
+
+Dritte Übung --> 
+
+
+  Docker Swarm initialisieren und einen Service mit 3 Replicas erzeugen (später auf 10 replicas skalieren)
+  ----------------------------------------------------------------------
+$ docker swarm init					# wird im vorhergehenden Tutorial erklärt
+$ docker pull registry.gitlab.com/ser-cal/docker-bootstrap/webserver_one:1.0		# damit das nächste Kommando funktioniert, muss das entsprechende Image vorher downgeloaded werden
+$ docker service create --name web -p 8080:8080 --replicas 3 registry.gitlab.com/ser-cal/docker-bootstrap/webserver_one:1.0
+
+$ docker service ps web
+$ docker service ls | grep -i webserver
+$ docker container ls | grep -i webserver
+
+  Container skalieren
+$ docker service scale web=10				# Container skalieren (hier auf 10)
+$ docker container ls | grep -i webserver		
+$ docker container rm -f <1.ContainerID> <2.ContainerID> <3.ContainerID>	# Drei Container löschen und schauen, was passiert
+$ docker container ls | grep -i webserver		# überprüfen und feststellen, dass wieder 10 Container laufen (desired state) - wurden wieder erzeugt
+
+  Clean-up:
+$ docker service rm web
+$ docker service ls | grep -i webserver			# überprüfen, ob gelöscht
+$ docker container ls | grep -i webserver		# überprüfen, ob gelöscht
+
+
+============================================================================================
+
+Vierte Übung --> 
+
+
+  Eine Multi-Container App mit Docker Stacks erstellen
+  ----------------------------------------------------------------------
+
+$ cd swarm-stack					# In das richtige Verzeichnis wechseln
+
+$ docker pull registry.gitlab.com/ser-cal/docker-bootstrap/swarm-stack:1.0
+$ docker image build -t registry.gitlab.com/ser-cal/docker-bootstrap/swarm-stack:1.0 .		# Neues Image darin erstellen
+$ docker push registry.gitlab.com/ser-cal/docker-bootstrap/swarm-stack:1.0
+
+$ docker stack deploy -c docker-compose.yml zaehler	# Stack "Zähler" starten
+
+$ docker stack ls					# Zeigt Name, Services und Orchestrator (Swarm) an
+$ docker stack services zaehler				# Zeigt die beiden Container an - dabei wurde der Container "counter_web_fe" 10x repliziert
+$ docker stack ps zaehler				# Zeigt jeden einzelnen Container
+
+ändern:
+$ vi docker-compose.yml					# Anzahl Replicas erhöhen oder reduzieren --> Zeile "replicas: xx"
+$ docker stack deploy -c docker-compose.yml zaheler	# Um die Änderungen zu aktivieren, das abgeänderte yml-File nochmals deployen
+$ docker stack ps zaheler				# Überprüfen, ob die Änderung durchgeführt wurde
+
+  Clean-up:
+$ docker stack rm zaehler
+$ docker stack ls					# überprüfen, ob gelöscht
+
+
+============================================================================================
