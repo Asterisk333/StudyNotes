@@ -1,7 +1,7 @@
 # Einfuehrung
 
 ---
->[📄 » **Fundamentals**](.md)
+>[📄 » **Fundamentals**](gitDoku.md)
 >   - fundamental Linux commands
 >   - Operators
 ---
