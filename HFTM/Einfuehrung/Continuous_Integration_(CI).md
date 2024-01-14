@@ -56,7 +56,5 @@ zuverlässigeren Softwareprodukt führt.
 > Wie begegne ich dem Thema heute, ev. in meiner täglichen Arbeit?
 > > Durch meine arbeit als Systemtechniker in einer noncloud umgebng bin, benutze ich keine versions kontolle. Abgesehen von o365 welches ich fuer Dokumente und Onnotes benutze.
 
-
-
 ---
 >[⬅️**back**](./README.md)
